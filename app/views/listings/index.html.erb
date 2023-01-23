@@ -1,0 +1,5 @@
+<h1>Listing index</h1>
+
+<% @listings.each do |listing| %>
+<%= Book.find(listing.book_id).title %>
+<% end %>

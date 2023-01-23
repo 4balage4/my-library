@@ -1,0 +1,6 @@
+
+<%= simple_form_for(@listing) do |f| %>
+<%# this will break most likely because it is not a finished form %>
+<%# I need to add the book Id and the List ID %>
+<%= f.input :comment %>
+<%= f.submit :"Save", class: "btn btn-primary" %>

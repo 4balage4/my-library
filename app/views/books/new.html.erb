@@ -1,0 +1,18 @@
+<h1>book new</h1>
+
+<%= simple_form_for(@book) do |f| %>
+<%= f.input :title %>
+<%= f.input :writer %>
+<%= f.input :year %>
+<%= f.input :language %>
+<%= f.input :genree %>
+<%= f.input :pages %>
+<%= f.input :status %>
+<%= f.input :date_finished, html5: true  %>
+<%= f.input :print %>
+<%= f.input :purchased, html5: true %>
+<%= f.input :lended %>
+<%= f.input :lended_to %>
+<%= f.input :location %>
+<%= f.submit :"Save", class: "btn btn-primary" %>
+<% end %>

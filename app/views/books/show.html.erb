@@ -2,3 +2,17 @@
 
 <p>title<%= @book.title %></p>
 <p>Writer <%= @book.writer %></p>
+
+<br>
+<br>
+<br>
+
+<%= link_to book_path(@book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do  %>
+  <i class="fa-solid fa-trash"></i>
+<% end %>
+
+<%= link_to "Delete", book_path(@book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
+
+<%= link_to "Edit", book_edit_path(@book), class: "btn btn-primary" %>
+
+<%= link_to "back to Books", books_path, class: "btn btn-primary" %>

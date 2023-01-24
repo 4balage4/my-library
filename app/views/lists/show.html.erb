@@ -1,5 +1,26 @@
 <h1>List show</h1>
 
 <%= @list.name %> <br>
+<%= @list.comment %>
+
 <%# should be the listings.each where list.id = with the params. %>
 <%# and list here all the books which are connected to this %>
+<br>
+<%= link_to "Back", lists_path, class: "btn btn-primary" %>
+<%= link_to "update", list_edit_path, class: "btn btn-primary" %>
+<%= link_to "delete", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
+
+<%= link_to "add movies to list", class: "btn btn-primary" %>
+
+
+<%# two ways of finding the things in the database %>
+
+<% @list.listings.each do |listing| %>
+  <%= link_to book_path(Book.find(listing.book_id)) do %>
+    <%= Book.find(listing.book_id).title %>
+  <% end %>
+<% end %>
+<p>____________________________________</p>
+<% Listing.where(list_id: @list.id).each do |listing| %>
+<%= Book.find(listing.book_id).title %>
+<% end %>

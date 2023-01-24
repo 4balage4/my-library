@@ -1,8 +1,9 @@
 
 <% @lists.each do |list|%>
-<p><%= list.name %></p>
-<p><%= list.comment %> </p> <br>
+  <%= link_to list_path(list) do %>
+    <p><%= list.name %></p>
+    <p><%= list.comment %> </p> <br>
+  <% end %>
 <% end %>
-
 
 <%# <%= render "form", list: @list %> %>

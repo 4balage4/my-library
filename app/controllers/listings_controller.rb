@@ -1,4 +1,7 @@
 class ListingsController < ApplicationController
+  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+
+
   def index
     @listings = Listing.all
   end
@@ -17,11 +20,9 @@ class ListingsController < ApplicationController
   end
 
   def edit
-    @listing = Listing.find(params[:id])
   end
 
   def update
-    @listing = Listing.find(params[:id])
     @listing.update(listing_params)
     if @listing.save
       redirect_to books_path
@@ -31,7 +32,6 @@ class ListingsController < ApplicationController
   end
 
   def destroy
-    @listing = Listing.find(params[:id])
     @listing.destroy
   end
 
@@ -39,5 +39,9 @@ class ListingsController < ApplicationController
 
   def listing_params
     params.require(:listing).permit(:comment, :book_id, :list_id)
+  end
+
+  def set_listing
+    @listing = Listing.find(params[:id])
   end
 end

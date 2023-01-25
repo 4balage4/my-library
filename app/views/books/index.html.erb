@@ -1,5 +1,12 @@
 <h1>Book</h1>
-
+<hr>
+<p>Lists</p>
+<% @lists.each do |list| %>
+  <%= link_to list_path(list) do %>
+  <p><strong><%= list.name %></strong></p>
+  <% end %>
+<% end %>
+<hr>
 <% @books.each do |book| %>
   <%= link_to book_path(book) do %>
     <p><%= book.title %></p>

@@ -1,10 +1,25 @@
-<h1>Showpage</h1>
+<h1> <strong><%=@book.title %></strong> showpage</h1>
+<p>title: <strong><%= @book.title %></strong></p>
+<p>Writer: <strong><%= @book.writer %></strong></p>
+<% if @book.comments.empty? %>
+  <% else %>
+    <p>Comments:
+    <ul>
+      <% @book.comments.each do |comment| %>
+      <li><%= comment.comment %> (on: <%= comment.created_at %>)</li>
+      <% end %>
+    </ul></p>
+    <% end %>
 
-<p>title<%= @book.title %></p>
-<p>Writer <%= @book.writer %></p>
 
 <br>
 <br>
+<h2>This book is on these lists</h2>
+<% @book.listings.each do |listing| %>
+<%= List.find(listing.list_id).name  %>
+<br>
+<% end %>
+
 <br>
 
 <%= link_to book_path(@book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do  %>
@@ -12,9 +27,13 @@
 <% end %>
 
 
-
 <%= link_to "Delete", book_path(@book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
 
-<%= link_to "Edit", book_edit_path(@book), class: "btn btn-primary" %>
+<%= link_to "Edit", edit_book_path(@book), class: "btn btn-primary" %>
 
 <%= link_to "back to Books", books_path, class: "btn btn-primary" %>
+
+
+<hr>
+<br><br><br>
+<%= render "comments/form", locals: {book: @book, comment: @comment} %>

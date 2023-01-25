@@ -38,6 +38,6 @@ List.all.each do |list|
 end
 
 puts "adding books to lists"
-30.times do
+100.times do
   Listing.create(book_id: book_ids.sample, list_id: list_ids.sample)
 end

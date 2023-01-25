@@ -1,0 +1,15 @@
+<%# <%= render "form", locals: {book: @book, comment: @comment} %> %>
+
+<%= simple_form_for [@book, @comment] do |f| %>
+  <%= f.input :comment %>
+  <%= f.input :review %>
+  <%= f.input :rating %>
+  <%= f.submit "Submit comment", class: "btn btn-primary" %>
+<% end %>
+
+<%# [@book, @comment] %>
+
+
+
+<%# here must be a problem %>
+<%# <%= simple_form_for locals: {book: @book, comment: @comment} do |f| %> %>

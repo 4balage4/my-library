@@ -2,33 +2,32 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  get "books", to: "books#index"
-  get "books/new", to: "books#new"
-  post "books", to: "books#create"
-  get "books/:id", to: "books#show", as: :book
-  delete "books/:id", to: "books#destroy"
-  get "books/:id/edit", to: "books#edit", as: :book_edit
-  patch "books/:id", to: "books#update"
+  resources :books do
+    resources :comments, only: [:new, :create]
+    resources :listings, only: [:new, :create, :delete]
+  end
+  resources :lists
+  resources :listings
 
 
-  get "listings", to: "listings#index"
-  get "books/:id", to: "listings#new"
-  post "books/:id", to: "listings#create"
-  get "list/:id", to: "listings#index"
-  get "listings/:id/edit", to: "listings#edit", as: :listings_edit
-  patch "listings/:id", to: "listings#update"
-  delete "listings/:id", to: "listings#destroy"
+  # get "listings", to: "listings#index"
+  # get "books/:id", to: "listings#new"
+  # post "books/:id", to: "listings#create"
+  # get "list/:id", to: "listings#index"
+  # get "listings/:id/edit", to: "listings#edit", as: :listings_edit
+  # patch "listings/:id", to: "listings#update"
+  # delete "listings/:id", to: "listings#destroy"
   # Defines the root path route ("/")
   # root "articles#index"
 
-  get "lists", to: "lists#index"
-  get "lists", to: "lists#new"
-  # get "lists/new", to: "lists#new"
-  post "lists", to: "lists#create"
-  get "lists/:id", to: "lists#show", as: :list
-  get "lists/:id/edit", to: "lists#edit", as: :list_edit
-  patch "lists/:id", to: "lists#update"
-  delete "lists/:id", to: "lists#destroy"
 
+  # get "lists", to: "lists#index"
+  # get "lists", to: "lists#new"
+  # # get "lists/new", to: "lists#new"
+  # post "lists", to: "lists#create"
+  # get "lists/:id", to: "lists#show", as: :list
+  # get "lists/:id/edit", to: "lists#edit", as: :list_edit
+  # patch "lists/:id", to: "lists#update"
+  # delete "lists/:id", to: "lists#destroy"
 
 end

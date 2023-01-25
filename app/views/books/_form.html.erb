@@ -14,3 +14,11 @@
 <%= f.input :location %>
 <%= f.submit :"Save", class: "btn btn-primary" %>
 <% end %>
+
+
+<%= simple_form_for [@book, @comment] do |f| %>
+  <%= f.input :comment %>
+  <%= f.input :review %>
+  <%= f.input :rating %>
+  <%= f.submit "Submit comment", class: "btn btn-primary" %>
+<% end %>

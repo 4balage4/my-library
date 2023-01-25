@@ -13,7 +13,7 @@
 <%= link_to "add movies to list", class: "btn btn-primary" %>
 
 
-<%# two ways of finding the things in the database %>
+<%# two options for finding the books in the database %>
 
 <% @list.listings.each do |listing| %>
   <%= link_to book_path(Book.find(listing.book_id)) do %>

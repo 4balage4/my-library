@@ -2,9 +2,12 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   def index
     @books = Book.all
+    @lists = List.all
   end
 
   def show
+    @comment = Comment.new
+    @comments = Comment.where(book: @book)
   end
 
   def new

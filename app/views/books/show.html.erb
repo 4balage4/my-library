@@ -6,7 +6,10 @@
     <p>Comments:
     <ul>
       <% @book.comments.each do |comment| %>
-      <li><%= comment.comment %> (on: <%= comment.created_at %>)</li>
+      <li><%= comment.comment %> (on: <%= comment.created_at %>)
+        <%= link_to book_path(@book), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do  %>
+        <i class="fa-solid fa-trash"></i> currently deleting the book
+      <% end %></li>
       <% end %>
     </ul></p>
     <% end %>
@@ -32,8 +35,22 @@
 <%= link_to "Edit", edit_book_path(@book), class: "btn btn-primary" %>
 
 <%= link_to "back to Books", books_path, class: "btn btn-primary" %>
+<%# <%= link_to "Add it on a list", new_listing_path, class: "btn btn-primary" %>
 
 
 <hr>
 <br><br><br>
 <%= render "comments/form", locals: {book: @book, comment: @comment} %>
+<%# <%= render "listings/bookform", locals: {book: @book, listing: @listing} %> %>
+
+<%# <%= render "listings/form", listing: @listing %>
+
+<br><br><br>
+<%# <%= render "listings/form", locals: {book: @book} %> %>
+
+
+<%= simple_form_for [@book, @listing = Listing.new] do |f| %>
+  <%= f.association :list, as: :radio_buttons %>
+  <%= f.input :comment %>
+  <%= f.submit "Submit to the list", class: "btn btn-primary" %>
+<% end %>

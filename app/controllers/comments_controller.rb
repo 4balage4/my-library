@@ -1,11 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_book, only: [:new, :create]
 
-  # def index
-  #   @comments = Comment.all
-  # end
-
-
   def new
     @comment = Comment.new
   end
@@ -20,6 +15,10 @@ class CommentsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @comment.destroy
   end
 
   private

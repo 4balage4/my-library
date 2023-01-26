@@ -1,0 +1,6 @@
+<%= simple_form_for [locals[:book], locals[:listings]] do |f| %>
+  <%= f.association :book %>
+  <%= f.association :list %>
+  <%= f.input :comment %>
+  <%= f.submit "Submit submit to the list", class: "btn btn-primary" %>
+<% end %>

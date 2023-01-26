@@ -3,12 +3,18 @@
 <p>Lists</p>
 <% @lists.each do |list| %>
   <%= link_to list_path(list) do %>
-  <p><strong><%= list.name %></strong></p>
+ |<strong><%= list.name %></strong> |
   <% end %>
 <% end %>
 <hr>
 <% @books.each do |book| %>
   <%= link_to book_path(book) do %>
-    <p><%= book.title %></p>
-  <% end %>
+    <p><%= book.title %> by <%= book.writer %>
+    <% end %>
+    <% book.listings.each do |listing| %>
+      <%= link_to list_path(listing.list_id) do %>
+      |<strong><%=  List.where(id: listing.list_id)[0].name %></strong>|
+      <% end %>
+    <% end %></p>
 <% end %>
+  

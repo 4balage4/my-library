@@ -1,7 +1,9 @@
+<%= simple_form_for (listing) do |f| %>
+  <%= f.association :book  %>
+  <%= f.association :list %>
+  <%= f.input :comment %>
+  <%= f.submit "Submit to the list", class: "btn btn-primary" %>
+<% end %>
 
-<%= simple_form_for(listing) do |f| %>
-<%# this will break most likely because it is not a finished form %>
-<%# I need to add the book Id and the List ID %>
-<%= f.input  %>
-<%= f.input :comment %>
-<%= f.submit :"Save", class: "btn btn-primary" %>
+
+<%# this is a great listing for listings/new route %>

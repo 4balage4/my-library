@@ -3,12 +3,11 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :books do
-    resources :comments, only: [:new, :create]
     resources :listings, only: [:new, :create, :delete]
+    resources :comments, only: [:new, :create, :delete]
   end
   resources :lists
   resources :listings
-
 
   # get "listings", to: "listings#index"
   # get "books/:id", to: "listings#new"

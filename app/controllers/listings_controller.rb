@@ -12,11 +12,21 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.new(listing_params)
-    @listing.book_id ? "" : @listing.book_id = params[book_id]
-    if @listing.save
-      redirect_to book_path(@listing.book)
+    # checks if we are on the book page or the listings page
+    @listing.book_id.nil? ? @listing.book_id = params[:book_id] : ""
+    @listing.list_id.nil? ? @listing.list_id = params[:list_id] : ""
+    if params[:book_id]
+      if @listing.save
+        redirect_to book_path(@listing.book)
+      else
+        render :new, status: :unprocessable_entity
+      end
     else
-      render :new, status: :unprocessable_entity
+      if @listing.save
+        redirect_to list_path(@listing.list)
+      else
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 

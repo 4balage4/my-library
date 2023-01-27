@@ -1,5 +1,7 @@
-<%= simple_form_for(list) do |f| %>
-<%= f.input :name %>
+<%= link_to "back", lists_path, class: "btn btn-primary" %>
+
+<%= simple_form_for locals[:list] do |f| %>
+<%= f.input :name, error: "List already exist" %>
 <%= f.input :comment %>
 <%= f.submit :"Create", class: "btn btn-primary" %>
 <% end %>

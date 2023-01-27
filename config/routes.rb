@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :listings, only: [:new, :create, :delete]
     resources :comments, only: [:new, :create, :delete]
   end
-  resources :lists
+  resources :lists do
+    resources :listings, only: [:new, :create, :delete]
+  end
   resources :listings
 
   # get "listings", to: "listings#index"
@@ -18,7 +20,6 @@ Rails.application.routes.draw do
   # delete "listings/:id", to: "listings#destroy"
   # Defines the root path route ("/")
   # root "articles#index"
-
 
   # get "lists", to: "lists#index"
   # get "lists", to: "lists#new"

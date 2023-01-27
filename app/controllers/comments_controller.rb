@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_book, only: [:new, :create]
+  before_action :set_book, only: [:new, :create, :destroy]
 
   def new
     @comment = Comment.new

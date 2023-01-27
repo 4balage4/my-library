@@ -7,7 +7,8 @@ class BooksController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = Comment.where(book: @book)
+    # @comments = Comment.where(book: @book)
+    @listing = Listing.new
   end
 
   def new

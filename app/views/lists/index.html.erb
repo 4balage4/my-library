@@ -1,3 +1,9 @@
+<%= link_to "Back to books", books_path, class: "btn btn-primary" %>
+<%= link_to "Create new list", new_list_path, class: "btn btn-primary" %>
+
+<%= render "form", locals: {list: @list} %>
+
+
 
 <% @lists.each do |list|%>
   <%= link_to list_path(list) do %>
@@ -5,5 +11,3 @@
     <p><%= list.comment %> </p> <br>
   <% end %>
 <% end %>
-
-<%# <%= render "form", list: @list %> %>

@@ -1,8 +1,11 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
 
-<% Listing.all.each do |listing| %>
-<%= Book.find(listing.book_id).title %>
-<% end %>
 
+<%= link_to "all books", books_path, class: "btn btn-warning" %>
+<%= link_to "create new book", new_book_path, class: "btn btn-warning" %>
 
+<%= link_to "all lists", lists_path, class: "btn btn-warning" %>
+<%= link_to "new list", new_list_path, class: "btn btn-warning" %>
+
+<%= link_to "new listing", new_listing_path, class: "btn btn-warning" %>

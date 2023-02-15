@@ -1,10 +1,10 @@
-<h1>List show</h1>
-
-<%= @list.name %> <br>
+<h1><%= @list.name %></h1>
+ <br>
 <%= @list.comment %>
 
 <%# should be the listings.each where list.id = with the params. %>
 <%# and list here all the books which are connected to this %>
+<br>
 <br>
 <%= link_to "Back", :back, class: "btn btn-primary" %>
 <%= link_to "back to books", books_path, class: "btn btn-primary" %>
@@ -17,13 +17,28 @@
 <b></b>
 <%# two options for finding the books in the database %>
 
-
-<% @list.books.each do |book| %>
-  <%= link_to book_path(book) do %>
-  <strong><%= book.title  %></strong> by
-  <strong><%= book.writer %></strong>
-  <% end %>
-  <br>
-<% end %>
+ <div class="container">
+    <div class="row">
+        <% @list.books.each do |book| %>
+          <div class=" col-6 col-sm-12 col-md-4 col-lg-2">
+          <%= link_to book_path(book) do %>
+            <div class="card mb-3">
+              <img src="https://www.syracuse.com/resizer/axHUit2IL6_c3wPAR76BiLPMoVg=/1280x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.syracuse.com/home/syr-media/width2048/img/entertainment/photo/booksjpg-4769312d87251d72.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title"><%= book.title %></h5>
+                <p class="card-text"><%= book.writer %></p>
+                <%# <a href="#" class="btn btn-primary">Go somewhere</a> %>
+                <%# <% book.listings.each do |listing| %>
+                  <%# <%= link_to list_path(listing.list_id) do %>
+                  <%# <strong><%=  List.where(id: listing.list_id)[0].name %> <%#</strong>
+                  <%# <% end %>
+                <%# <% end %>
+              </div>
+            </div>
+          <% end %>
+          </div>
+        <% end %>
+    </div>
+  </div>
 
 <%= render "listings/listform", locals: {list: @list, listing: @listing}  %>

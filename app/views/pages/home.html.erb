@@ -1,5 +1,5 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Welcome to your library</h1>
+<p>Here you can find your books</p>
 
 
 <%= link_to "all books", books_path, class: "btn btn-warning" %>
@@ -9,3 +9,31 @@
 <%= link_to "new list", new_list_path, class: "btn btn-warning" %>
 
 <%= link_to "new listing", new_listing_path, class: "btn btn-warning" %>
+
+
+<%# HAve a currently reading page %>
+<h2>Currently Reading</h2>
+<%# Currently reading %>
+<div class="container">
+  <% @books.each do |book| %>
+        <% if book.status == "read" %>
+        <div class="book">
+        <%= link_to book_path(book) do %>
+        <h2><%= book.title %></h2>
+        <p><%= book.writer%></p>
+        <% end %>
+        </div>
+        <% end %>
+      <% end %>
+</div>
+
+<h3>Planning to read</h3>
+<%# Planning to buy books %>
+<%# This year read books, I can use also for the previous years too %>
+
+<h3>Books This Year</h3>
+
+
+<h3>Last added books </h3>
+
+<h3>Last added books to wishlist</h3>

@@ -1,10 +1,10 @@
 <h1>Listing index</h1>
+
 <%= link_to "back", :back, class: "btn btn-primary" %>
 
 <% @listings.each do |listing| %>
+
 <%= List.find(listing.list_id).name %> <br>
 <%= Book.find(listing.book_id).title %>
 <hr>
 <% end %>
-
-

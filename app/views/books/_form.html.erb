@@ -1,7 +1,9 @@
+<%# ||||||||||||||||||||||||||||||||||||||||||||||| %>
+<%# This is the book form. I need to make it prettier %>
+
 <%= link_to "back", :back, class: "btn btn-primary" %>
 
 
-<div class="container">
   <%= simple_form_for(book) do |f| %>
   <%= f.input :title %>
   <%= f.input :writer %>
@@ -18,4 +20,3 @@
   <%= f.input :location %>
   <%= f.submit :"Save", class: "btn btn-primary" %>
   <% end %>
-</div>

@@ -1,0 +1,38 @@
+.container {
+  display: grid;
+  // automatically fit as many columns as defined in the minmax()
+  grid-template-columns: repeat(auto-fit, minmax(30%, 1fr));
+
+  grid-auto-rows: 100px;
+  grid-gap: 10px;
+}
+
+.book {
+  border: 2px black solid;
+  min-height: 100px;
+  line-break: normal;
+}
+
+.book h2 {
+  margin: 0;
+
+}
+
+.book p {
+  margin: 0;
+
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+     // automatically fit as many columns as defined in the minmax()
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+     // automatically fit as many columns as defined in the minmax()
+    grid-template-columns: 1fr;
+  }
+}

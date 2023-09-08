@@ -1,44 +1,49 @@
+<%# ||||||||||||||||||||||||||||||||||||||||||||||| %>
+<%# List name %>
+<%# There will be a description about the list %>
+
 <h1><%= @list.name %></h1>
  <br>
 <%= @list.comment %>
+<button> Hello button </button>
 
 <%# should be the listings.each where list.id = with the params. %>
 <%# and list here all the books which are connected to this %>
+
+
+<%# ||||||||||||||||||||||||||||||||||||||||||||||| %>
+
+<%# Buttons %>
+<%# These are the buttons for the list page %>
+
 <br>
 <br>
+<%# Back button %>
 <%= link_to "Back", :back, class: "btn btn-primary" %>
+<%# back to books button %>
 <%= link_to "back to books", books_path, class: "btn btn-primary" %>
+<%# update button --- NOT WORKING %>
+<%# ||||||||||||||||||||||||||||||||||||||||||||||| %>
 <%= link_to "update", edit_list_path, class: "btn btn-primary" %>
-<%= link_to "delete", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-primary" %>
+<%# Delete List button %>
+<%= link_to "delete", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?"}, class: "btn btn-primary" %>
 
-<%= link_to "add movies to list", class: "btn btn-primary" %>
+
 <hr>
-
-<b></b>
-<%# two options for finding the books in the database %>
-
- <div class="container">
-    <div class="row">
-        <% @list.books.each do |book| %>
-          <div class=" col-6 col-sm-12 col-md-4 col-lg-2">
-          <%= link_to book_path(book) do %>
-            <div class="card mb-3">
-              <img src="https://www.syracuse.com/resizer/axHUit2IL6_c3wPAR76BiLPMoVg=/1280x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.syracuse.com/home/syr-media/width2048/img/entertainment/photo/booksjpg-4769312d87251d72.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title"><%= book.title %></h5>
-                <p class="card-text"><%= book.writer %></p>
-                <%# <a href="#" class="btn btn-primary">Go somewhere</a> %>
-                <%# <% book.listings.each do |listing| %>
-                  <%# <%= link_to list_path(listing.list_id) do %>
-                  <%# <strong><%=  List.where(id: listing.list_id)[0].name %> <%#</strong>
-                  <%# <% end %>
-                <%# <% end %>
-              </div>
-            </div>
-          <% end %>
-          </div>
-        <% end %>
-    </div>
+<%# ||||||||||||||||||||||||||||||||||||||||||||||| %>
+<%# Listed books with this list %>
+<div class="container">
+<% @list.books.each do |book| %>
+  <%= link_to book_path(book) do %>
+  <div class="book">
+  <h2><%= book.title %></h2>
+  <p><%= book.writer %></p>
   </div>
+  <% end %>
+<% end %>
+</div>
 
+
+<%# Renders the form to add a book to this list
+This already has the list_id attached. So we only need to choose the book and if we want to add a comment %>
 <%= render "listings/listform", locals: {list: @list, listing: @listing}  %>

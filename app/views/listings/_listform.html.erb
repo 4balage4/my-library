@@ -1,7 +1,7 @@
-<div class="container">
+
   <%= simple_form_for [locals[:list], locals[:listing]] do |f| %>
     <%= f.association :book %>
     <%= f.input :comment %>
     <%= f.submit "Submit submit to the list", class: "btn btn-primary" %>
   <% end %>
-</div>
+

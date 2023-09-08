@@ -1,40 +1,37 @@
+<%# ||||||||||||||||||||||||||||||||||||||||||||||| %>
+<%#  %>
+
 <h1>Book</h1>
-<hr>
+
+
+<%# ||||||||||||||||||||||||||||||||||||||||||||||| %>
+<%# Here I will add the javascript on the lists There will be all books function %>
+<%# So the javascript will show everything based on the list we choose %>
 
 <p>Lists</p>
-<div class="container text-center">
   <% @lists.each do |list| %>
-    <%= link_to list_path(list) do %>
+        <%= link_to list_path(list) do %>
   |<strong><%= list.name %></strong> |
     <% end %>
   <% end %>
   <hr>
+
   <%= link_to "New list", new_list_path, class: "btn btn-primary" %>
   <%= link_to "New book", new_book_path, class: "btn btn-primary" %>
 
-
-  <hr>
-  <div class="container">
-    <div class="row">
-        <% @books.each do |book| %>
-          <div class=" col-6 col-sm-12 col-md-4 col-lg-2">
-          <%= link_to book_path(book) do %>
-            <div class="card mb-3">
-              <img src="https://images.unsplash.com/photo-1485990005353-9abcf694f3e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title"><%= book.title %></h5>
-                <p class="card-text"><%= book.writer %></p>
-                <%# <a href="#" class="btn btn-primary">Go somewhere</a> %>
-                <%# <% book.listings.each do |listing| %>
-                  <%# <%= link_to list_path(listing.list_id) do %>
-                  <%# <strong><%=  List.where(id: listing.list_id)[0].name %> <%#</strong>
-                  <%# <% end %>
-                <%# <% end %>
-              </div>
-            </div>
-          <% end %>
-          </div>
+<div class="container">
+  <% @books.each do |book| %>
+        <%= link_to book_path(book) do %>
+        <div class="book">
+        <h2><%= book.title %></h2>
+        <p><%= book.writer%></p>
+        </div>
         <% end %>
-    </div>
-  </div>
+      <% end %>
 </div>
+
+
+
+
+
+<%# have a button to go to the list %>

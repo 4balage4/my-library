@@ -1,24 +1,13 @@
-<div class="container">
+
 <%= link_to "Back to books", books_path, class: "btn btn-primary" %>
 <%= link_to "Create new list", new_list_path, class: "btn btn-primary" %>
 
+
 <%= render "form", locals: {list: @list} %>
 
-  <div class="container">
-    <div class="row">
-        <% @lists.each do |list|%>
-          <div class=" col-6 col-sm-12 col-md-4 col-lg-2">
-          <%= link_to list_path(list) do %>
-            <div class="card mb-3">
-              <img src="https://www.syracuse.com/resizer/axHUit2IL6_c3wPAR76BiLPMoVg=/1280x0/smart/advancelocal-adapter-image-uploads.s3.amazonaws.com/image.syracuse.com/home/syr-media/width2048/img/entertainment/photo/booksjpg-4769312d87251d72.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title"><%= list.name %></h5>
-                <p class="card-text"><%= list.comment %></p>
-              </div>
-            </div>
-          <% end %>
-          </div>
-        <% end %>
-    </div>
-  </div>
-</div>
+<% @lists.each do |list|%>
+  <%= link_to list_path(list) do %>
+  <h2><%= list.name %></h2>
+  <p ><%= list.comment %></p>
+  <% end %>
+<% end %>

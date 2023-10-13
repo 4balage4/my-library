@@ -1,39 +1,14 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://www.logolynx.com/images/logolynx/29/2995e442ba1d206854ad9e29b32d1271.gif" %>
-    <% end %>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Currently reading", books_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item active">
-            <%= link_to "My Books", books_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "My Lists", lists_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://clipart.info/images/ccovers/1503688589dog%20face%20png%202.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
+<navbar>
+  <div class="navbar-container">
+    <%= image_tag("placeholder_logo.png", :class => "logo" , :alt => "logo")%>
+    <%# <img class="navbar-logo" src="/home/balazs/code/4balage4/my-libary/app/assets/images/placeholder_logo.png" alt="logo" /> %>
+    <h2> User's Library</h2>
+    <ul>
+      <li><p>Home</p></li>
+      <li><p>Lists</p></li>
+      <li><p>Favorites</p></li>
+      <li><p>Whishlist</p></li>
+      <li><p>Sign out</p></li>
+    </ul>
   </div>
-</div>
+</navbar>
